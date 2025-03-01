@@ -10,9 +10,10 @@ const api = axios.create({
   },
 });
 
-export const getGroups = async () => {
+export const getGroups = async (category?: string) => {
   try {
-    const response = await api.get('/groups');
+    const params = category && category !== 'all' ? { category } : {};
+    const response = await api.get('/groups', { params });
     return response.data;
   } catch (error) {
     console.error('Error fetching groups:', error);
@@ -52,6 +53,16 @@ export const signup = async (userData: {
     return response.data;
   } catch (error) {
     console.error('Signup error:', error);
+    throw error;
+  }
+};
+
+export const requestPasswordReset = async (email: string) => {
+  try {
+    const response = await api.post('/forgot-password', { email });
+    return response.data;
+  } catch (error) {
+    console.error('Password reset request error:', error);
     throw error;
   }
 };

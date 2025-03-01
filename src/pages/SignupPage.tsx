@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { signup } from '@/services/api';
 import { useToast } from '@/components/ui/use-toast';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { useAuthStore } from '@/store';
 
 export default function SignupPage() {
@@ -127,9 +127,9 @@ export default function SignupPage() {
           
           <div className="text-center text-sm mt-4">
             Already have an account?{" "}
-            <Button variant="link" className="p-0 h-auto" onClick={() => navigate('/')}>
+            <Link to="/login" className="text-primary hover:underline font-medium">
               Login
-            </Button>
+            </Link>
           </div>
         </form>
       </div>

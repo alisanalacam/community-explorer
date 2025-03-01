@@ -12,6 +12,7 @@ import Index from "./pages/Index";
 import Communities from "./pages/Communities";
 import CommunityDetail from "./pages/CommunityDetail";
 import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/communities" element={<Communities />} />
             <Route path="/communities/:slug" element={<CommunityDetail />} />
             <Route path="/signup" element={<SignupPage />} />
+            <Route path="/login" element={<LoginPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
