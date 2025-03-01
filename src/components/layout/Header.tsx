@@ -2,8 +2,8 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useUiStore, useAuthStore } from "@/store";
-import { Link } from "react-router-dom";
-import { ChevronDown, Menu, Plus, Search, Settings, X } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { ChevronDown, Menu, Plus, Search, X } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
 
 export default function Header() {
@@ -13,6 +13,7 @@ export default function Header() {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
@@ -20,6 +21,13 @@ export default function Header() {
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter' && searchQuery.trim()) {
+      navigate(`/communities?search=${encodeURIComponent(searchQuery)}`);
+      setDropdownOpen(false);
+    }
   };
 
   // Close dropdown when clicking outside
@@ -70,6 +78,7 @@ export default function Header() {
                       placeholder="Search"
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
+                      onKeyDown={handleSearch}
                     />
                   </div>
                   

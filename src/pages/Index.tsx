@@ -64,7 +64,7 @@ export default function Index() {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen pb-0">
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="container px-4 mx-auto">

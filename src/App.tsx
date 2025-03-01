@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 import LoginModal from "./components/auth/LoginModal";
 import SignupModal from "./components/auth/SignupModal";
 import Index from "./pages/Index";
@@ -14,6 +15,8 @@ import CommunityDetail from "./pages/CommunityDetail";
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import Pricing from "./pages/Pricing";
+import Policy from "./pages/Policy";
+import Affiliate from "./pages/Affiliate";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -35,9 +38,12 @@ const App = () => (
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/pricing" element={<Pricing />} />
+            <Route path="/policy/:tab?" element={<Policy />} />
+            <Route path="/affiliate" element={<Affiliate />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </TooltipProvider>
     </HelmetProvider>
